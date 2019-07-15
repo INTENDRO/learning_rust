@@ -20,10 +20,8 @@ fn mean(v: &Vec<i32>) -> f64 {
 fn median(v: &Vec<i32>) -> f64 {
     let vlen = v.len();
     if (vlen % 2) == 0 {
-        println!("even");
         return ((v[vlen/2] + v[vlen/2 - 1]) as f64)/2.0;
     } else {
-        println!("odd");
         return v[vlen/2] as f64;
     }
 }
@@ -49,13 +47,32 @@ fn mode(v: &Vec<i32>) -> f64 {
 }
 
 fn main() {
-    let mut data = vec![11,12,10,9,9,12,11,12];
+    let mut data1 = vec![-10, 0, -6, 6, 3, -8, 2, -8, -8, -2];
+    let mut data2 = vec![4, 2, -6, -3, -9, 2, 0, 3, 5, 2];
+    let mut data3 = vec![0, 9, -1, 8, 3, -6, 1, -7, 7, -6];
 
-    data.sort();
 
-    println!("{:?}",data);
+    data1.sort();
+    data2.sort();
+    data3.sort();
 
-    println!("mean: {}", mean(&data));
-    println!("median: {}", median(&data));
-    println!("mode: {}", mode(&data));
+    println!("{:?}", data3);
+
+    assert_eq!(mean(&data1), -3.1);
+    assert_eq!(median(&data1), -4.0);
+    assert_eq!(mode(&data1), -8.0);
+
+    assert_eq!(mean(&data2), 0.0);
+    assert_eq!(median(&data2), 2.0);
+    assert_eq!(mode(&data2), 2.0);
+
+    assert_eq!(mean(&data3), 0.8);
+    assert_eq!(median(&data3), 0.5);
+    assert_eq!(mode(&data3), -6.0);
+
+    println!("data1");
+    println!("mean: {}", mean(&data1));
+    println!("median: {}", median(&data1));
+    println!("mode: {}", mode(&data1));
+    println!();
 }
